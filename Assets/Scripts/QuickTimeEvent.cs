@@ -2,34 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuickTimeEvent : MonoBehaviour
 {
-    private int _points;
-    private float _precisionMultiplier;
+    
+    [Range(0,1)]
     [SerializeField] private float _timeToPress = 1f;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _precisionMultiplier;
+    [SerializeField] private int _points;
     
-    
-    private bool _hasStarted = true;
-    private bool _hasEnded = false;
-    private float _currentValue;
     [SerializeField] private Slider _objectToMove;
     [SerializeField] private RectTransform[] _pressBoundryObjects;
     
-    
-    
-    [SerializeField] private float speed;
-
-    private void Start()
-    {
-        StartEvent();
-    }
+    private GameManager _gameManager;
+    private Planet _planet;
+    private bool _hasStarted = true;
+    private bool _hasEnded = false;
+    private float _currentValue;
 
     // Start is called before the first frame update
-    public void StartEvent()
+    public void StartEvent(Planet pPlanet)
     {
+        _gameManager = GameManager.Instance;
+        _planet = pPlanet;
         _hasStarted = true;
         _hasEnded = false;
         CreateBorders();
@@ -51,24 +50,34 @@ public class QuickTimeEvent : MonoBehaviour
 
     private void UpdateEvent()
     {
-        _currentValue = Mathf.Sin(Time.time * speed);
+        if (!_hasStarted || _hasEnded) return;
+        _currentValue = Mathf.Sin(Time.time * _speed);
         Debug.Log(_currentValue);
         _objectToMove.value = _currentValue;
-
-        if (!_hasStarted && _hasEnded) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
-        
-        if(_currentValue < _timeToPress && _currentValue > -_timeToPress)
+
+        int points = _points;
+        if (_currentValue < _timeToPress && _currentValue > -_timeToPress)
         {
             Debug.LogWarning("You pressed the button at the right time");
             // awarded points = points * precisionMultiplier
-            _hasEnded = true;
+            points *= _precisionMultiplier;
         }
         else
         {
             Debug.LogWarning("You pressed the button at the wrong time");
-            // awarded points = points;
-            _hasEnded = true;
         }
+        _gameManager.AddPoints(points);
+        _gameManager.AddTopping(_planet.GetTopping());
+        _hasEnded = true;
+
+        //Disable canvas with a coroutine
+        StartCoroutine(DisableCanvas());
+    }
+    
+    private IEnumerator DisableCanvas()
+    {
+        yield return new WaitForSeconds(5);
+        GameManager.Instance.EndQTE();
     }
 }

@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Order : ScriptableObject
+[Serializable]
+public class Order
 {
-    private List<Topping> _toppings;
+    [SerializeField] private List<Topping> _toppings = new();
 
     public void AddTopping(Topping pTopping)
     {

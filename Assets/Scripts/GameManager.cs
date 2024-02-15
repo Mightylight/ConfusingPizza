@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviour
     {
         _startTime = Time.time;
         GetRandomOrder();
+        Debug.Log("Got random order");
         DecoratePlanets();
+        Debug.Log("Decorated Planets");
     }
 
     private void Update()
@@ -61,23 +63,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool CheckForCompletion()
+    {
+        List<Topping> orderList = _currentOrder.GetToppings();
+        foreach (Topping topping in orderList)
+        {
+            if(aqquiredToppings.Contains(topping))
+            {
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+        Debug.Log("Order Completed");
+        return true;
+    }
+
     private void DecoratePlanets()
     {
         List<Planet> planets = new List<Planet>(_planets);
         int randomIndex = UnityEngine.Random.Range(0, planets.Count);
         _endPlanet = planets[randomIndex];
         planets.RemoveAt(randomIndex);
-        _planets.Remove(_endPlanet);
         List<Topping> toppings = _currentOrder.GetToppings();
         
 
-        if(planets.Count <= toppings.Count)
+        if(planets.Count < toppings.Count)
         {
             Debug.LogError("Not enough planets to decorate");
             return;
         }
         // Add toppings to the planets
-        foreach (Topping topping in toppings)
+        foreach (Topping topping in _toppings)
         {
             randomIndex = UnityEngine.Random.Range(0, planets.Count);
             Debug.Log(randomIndex);
@@ -91,6 +110,7 @@ public class GameManager : MonoBehaviour
             randomIndex = UnityEngine.Random.Range(0, _toppings.Count);
             planet.AddTopping(_toppings[randomIndex]);
         }
+        //_planets.Remove(_endPlanet);
     }
 
     private void UpdateTimer()
@@ -99,10 +119,13 @@ public class GameManager : MonoBehaviour
         {
             // End the game
             // TODO: Highscore system
+            //Get the textfile and put the highscore in there
+            
+            Debug.Log("Game over");
         }
         
         float timeLeft = _timeLimitInSeconds - (Time.time - _startTime);
-        _timerText.text = $"Time: {timeLeft.ToString("F0")}";
+        _timerText.text = $"Time: {timeLeft:F0}";
     }
 
     private void GetRandomOrder()

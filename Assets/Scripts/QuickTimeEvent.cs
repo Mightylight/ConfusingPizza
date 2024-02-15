@@ -68,6 +68,7 @@ public class QuickTimeEvent : MonoBehaviour
             Debug.LogWarning("You pressed the button at the wrong time");
         }
         _gameManager.AddPoints(points);
+        _planet.isExplored = true;
         _gameManager.AddTopping(_planet.GetTopping());
         _hasEnded = true;
 

@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class Planet : MonoBehaviour
 {
+    //TODO Make the End planet implementation
     public string _planetName; 
     [SerializeField] private Topping _topping;
+    
+    private bool _isEndPlanet;
 
     private void Start()
     {
@@ -31,7 +35,15 @@ public class Planet : MonoBehaviour
         
         // Start interaction with planet
         // Enable Canvas
-        GameManager.Instance.StartQTE(this);
+        if (!_isEndPlanet)
+        {
+            GameManager.Instance.StartQTE(this);
+        }
+        else
+        {
+            //TODO: UI of quest complete
+            //TODO: Check if the order is correct
+        }
     }
 }
 

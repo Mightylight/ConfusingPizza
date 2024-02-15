@@ -52,7 +52,7 @@ public class QuickTimeEvent : MonoBehaviour
     {
         if (!_hasStarted || _hasEnded) return;
         _currentValue = Mathf.Sin(Time.time * _speed);
-        Debug.Log(_currentValue);
+        //Debug.Log(_currentValue);
         _objectToMove.value = _currentValue;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 

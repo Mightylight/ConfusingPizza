@@ -16,7 +16,6 @@ public class QuickTimeEvent : MonoBehaviour
     [SerializeField] private int _points;
 
     [SerializeField] private GameObject _toppingSprite;
-    [SerializeField] private GameObject _sliderObject;
     
     
     [SerializeField] private Slider _objectToMove;
@@ -35,6 +34,8 @@ public class QuickTimeEvent : MonoBehaviour
         _planet = pPlanet;
         _hasStarted = true;
         _hasEnded = false;
+        _toppingSprite.SetActive(false);
+        _objectToMove.gameObject.SetActive(true);
         CreateBorders();
     }
 

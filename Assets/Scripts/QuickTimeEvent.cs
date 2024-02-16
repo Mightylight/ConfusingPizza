@@ -14,6 +14,9 @@ public class QuickTimeEvent : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private int _precisionMultiplier;
     [SerializeField] private int _points;
+
+    [SerializeField] private GameObject _toppingSprite;
+    
     
     [SerializeField] private Slider _objectToMove;
     [SerializeField] private RectTransform[] _pressBoundryObjects;
@@ -31,6 +34,8 @@ public class QuickTimeEvent : MonoBehaviour
         _planet = pPlanet;
         _hasStarted = true;
         _hasEnded = false;
+        _toppingSprite.SetActive(false);
+        _objectToMove.gameObject.SetActive(true);
         CreateBorders();
     }
 
@@ -52,10 +57,13 @@ public class QuickTimeEvent : MonoBehaviour
     {
         if (!_hasStarted || _hasEnded) return;
         _currentValue = Mathf.Sin(Time.time * _speed);
-        Debug.Log(_currentValue);
+        //Debug.Log(_currentValue);
         _objectToMove.value = _currentValue;
-        if (!Input.GetKeyDown(KeyCode.Space)) return;
+    }
 
+    public void TriggerEvent()
+    {
+        if (!_hasStarted || _hasEnded) return;
         int points = _points;
         if (_currentValue < _timeToPress && _currentValue > -_timeToPress)
         {
@@ -68,11 +76,16 @@ public class QuickTimeEvent : MonoBehaviour
             Debug.LogWarning("You pressed the button at the wrong time");
         }
         _gameManager.AddPoints(points);
+        _planet.isExplored = true;
         _gameManager.AddTopping(_planet.GetTopping());
         _hasEnded = true;
 
         //Disable canvas with a coroutine
         StartCoroutine(DisableCanvas());
+        _objectToMove.gameObject.SetActive(false);
+        Topping topping = _planet.GetTopping();
+        _toppingSprite.GetComponent<Image>().sprite = topping.toppingSprite;
+        _toppingSprite.SetActive(true);
     }
     
     private IEnumerator DisableCanvas()

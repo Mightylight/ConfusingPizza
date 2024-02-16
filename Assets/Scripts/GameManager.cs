@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private QuickTimeEvent _quickTimeEvent;
     [SerializeField] private GameObject _QTECanvas;
+    [SerializeField] private GameObject _endPlanetCanvas;
+    [SerializeField] private GameObject _endRequirementNotMetCanvas;
+    
+    private bool stopTimer = false;
+    
     
     
     public static GameManager Instance;
@@ -63,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool CheckForCompletion()
+    private bool CheckForCompletion()
     {
         List<Topping> orderList = _currentOrder.GetToppings();
         foreach (Topping topping in orderList)
@@ -83,9 +88,11 @@ public class GameManager : MonoBehaviour
 
     private void DecoratePlanets()
     {
+        //Get a random planet and make it the deliver planet
         List<Planet> planets = new List<Planet>(_planets);
         int randomIndex = UnityEngine.Random.Range(0, planets.Count);
         _endPlanet = planets[randomIndex];
+        _endPlanet.SetEndPlanet();
         planets.RemoveAt(randomIndex);
         List<Topping> toppings = _currentOrder.GetToppings();
         
@@ -95,7 +102,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Not enough planets to decorate");
             return;
         }
-        // Add toppings to the planets
+        // Add toppings to the remaining planets
         foreach (Topping topping in _toppings)
         {
             randomIndex = UnityEngine.Random.Range(0, planets.Count);
@@ -115,17 +122,29 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimer()
     {
+        if(stopTimer) return;
         if (Time.time - _startTime > _timeLimitInSeconds)
         {
             // End the game
-            // TODO: Highscore system
-            //Get the textfile and put the highscore in there
+            EndGame();
+            ShowHighScores();
             
             Debug.Log("Game over");
         }
         
         float timeLeft = _timeLimitInSeconds - (Time.time - _startTime);
         _timerText.text = $"Time: {timeLeft:F0}";
+    }
+
+    private void EndGame()
+    {
+        
+    }
+
+    private void ShowHighScores()
+    {
+        // TODO: Highscore system
+        //Get the textfile and put the highscore in there
     }
 
     private void GetRandomOrder()
@@ -137,7 +156,22 @@ public class GameManager : MonoBehaviour
         }
         _currentOrder = order;
     }
-    
+
+    public void EndPlanet()
+    {
+        if (CheckForCompletion())
+        {
+            //End the game, you've won
+            _endPlanetCanvas.SetActive(true);
+            stopTimer = true;
+        }
+        else
+        {
+            //Show player that they do not have everything yet
+            _endRequirementNotMetCanvas.SetActive(true);
+        }
+    }
+
     public void StartQTE(Planet pPlanet)
     {
         _QTECanvas.SetActive(true);

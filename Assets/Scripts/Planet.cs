@@ -8,7 +8,7 @@ using UnityEngine.Android;
 public class Planet : MonoBehaviour
 {
     //TODO Make the End planet implementation
-    public string _planetName; 
+    public string planetName; 
     public bool isExplored;
     
     [SerializeField] private Topping _topping;
@@ -19,12 +19,17 @@ public class Planet : MonoBehaviour
 
     private void Start()
     {
-        _planetName = gameObject.name;
+        planetName = gameObject.name;
     }
     
     public void AddTopping(Topping pTopping)
     {
         _topping = pTopping;
+    }
+    
+    public void SetEndPlanet()
+    {
+        _isEndPlanet = true;
     }
 
     public Topping GetTopping()
@@ -36,6 +41,7 @@ public class Planet : MonoBehaviour
     private void OnCollisionEnter(Collision pOther)
     {
         if (!pOther.gameObject.CompareTag("Player") || isExplored) return;
+        //TODO: stop player from moving
         if (!_isEndPlanet)
         {
             GameManager.Instance.StartQTE(this);
@@ -43,8 +49,7 @@ public class Planet : MonoBehaviour
         else
         {
             //TODO: UI of quest complete
-            //TODO: Check if the order is correct
-            GameManager.Instance.CheckForCompletion();
+            GameManager.Instance.EndPlanet();
         }
     }
 }

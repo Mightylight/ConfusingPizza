@@ -8,5 +8,5 @@ using UnityEngine;
 public class Topping
 {
     public string toppingName;
-    public GameObject toppingPrefab;
+    public Sprite toppingSprite;
 }

@@ -756,18 +756,6 @@ MonoBehaviour:
   _topping:
     toppingName: 
     toppingSprite: {fileID: 0}
---- !u!114 &472776749 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7605380443547918162, guid: 131945460097a18488542597a90d406b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1739989503}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6ac1375fa7a85419940cbd0ffec2c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &488548941
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +858,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &681430421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076475054270767732, guid: 131945460097a18488542597a90d406b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1861594769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705258502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,8 +1052,8 @@ MonoBehaviour:
   _timerText: {fileID: 1868989600}
   _toppingText: {fileID: 38443898}
   _planetParent: {fileID: 1185044416}
-  _quickTimeEvent: {fileID: 472776749}
-  _QTECanvas: {fileID: 1436042914}
+  _quickTimeEvent: {fileID: 1877223445}
+  _QTECanvas: {fileID: 681430421}
   _endPlanetCanvas: {fileID: 0}
   _endRequirementNotMetCanvas: {fileID: 0}
 --- !u!4 &708126476
@@ -1421,12 +1415,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1185044417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1436042914 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9076475054270767732, guid: 131945460097a18488542597a90d406b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1739989503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712068373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,7 +1606,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 738250831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1739989503
+--- !u!1001 &1861594769
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1696,6 +1684,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1877223445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5798412973769989450, guid: 131945460097a18488542597a90d406b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1861594769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6ac1375fa7a85419940cbd0ffec2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &113698352319062186
@@ -2220,5 +2220,5 @@ SceneRoots:
   - {fileID: 708126476}
   - {fileID: 738250831}
   - {fileID: 1313880505}
-  - {fileID: 1739989503}
   - {fileID: 1123086521}
+  - {fileID: 1861594769}

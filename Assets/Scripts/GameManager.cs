@@ -161,10 +161,11 @@ public class GameManager : MonoBehaviour
             order.AddTopping(_toppings[UnityEngine.Random.Range(0, _toppings.Count)]);
         }
         _currentOrder = order;
+        List<Topping> toppings = _currentOrder.GetToppings();
         string ingredientString = "";
-        for (int i = 0 ; i < _toppings.Count ; i++)
+        for (int i = 0 ; i < toppings.Count ; i++)
         {
-            ingredientString += $"{i + 1}. {_toppings[i].toppingName}\n";
+            ingredientString += $"{i + 1}. {toppings[i].toppingName}\n";
         }
         _toppingText.text = ingredientString;
     }
@@ -205,5 +206,24 @@ public class GameManager : MonoBehaviour
     public void AddTopping(Topping pTopping)
     {
         aqquiredToppings.Add(pTopping);
+        UpdateOrderText();
+    }
+
+    private void UpdateOrderText()
+    {
+        List<Topping> toppings = _currentOrder.GetToppings();
+        string ingredientString = "";
+        for (int i = 0; i < toppings.Count; i++)
+        {
+            if(aqquiredToppings.Contains(toppings[i]))
+            {
+                ingredientString += $"<s>{i + 1}. {toppings[i].toppingName} </s>\n";
+            }
+            else
+            {
+                ingredientString += $"{i + 1}. {toppings[i].toppingName}\n";
+            }
+        }
+        _toppingText.text = ingredientString;
     }
 }

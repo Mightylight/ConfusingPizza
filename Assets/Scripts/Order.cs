@@ -13,6 +13,11 @@ public class Order
         _toppings.Add(pTopping);
     }
 
+    public void RemoveTopping(Topping pTopping)
+    {
+        _toppings.Remove(pTopping);
+    }
+
     public List<Topping> GetToppings()
     {
         // Return the order

@@ -156,9 +156,12 @@ public class GameManager : MonoBehaviour
     private void GetRandomOrder()
     {
         Order order = new();
+        List<Topping> tempToppingsList = new List<Topping>(_toppings);
         for (int i = 0; i < _amountOfToppingsPerOrder; i++)
         {
-            order.AddTopping(_toppings[UnityEngine.Random.Range(0, _toppings.Count)]);
+            Topping topping = tempToppingsList[UnityEngine.Random.Range(0, tempToppingsList.Count)];
+            order.AddTopping(topping);
+            tempToppingsList.Remove(topping);
         }
         _currentOrder = order;
         List<Topping> toppings = _currentOrder.GetToppings();

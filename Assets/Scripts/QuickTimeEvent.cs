@@ -52,7 +52,7 @@ public class QuickTimeEvent : MonoBehaviour
     {
         if (!_hasStarted || _hasEnded) return;
         _currentValue = Mathf.Sin(Time.time * _speed);
-        Debug.Log(_currentValue);
+        //Debug.Log(_currentValue);
         _objectToMove.value = _currentValue;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
@@ -68,6 +68,7 @@ public class QuickTimeEvent : MonoBehaviour
             Debug.LogWarning("You pressed the button at the wrong time");
         }
         _gameManager.AddPoints(points);
+        _planet.isExplored = true;
         _gameManager.AddTopping(_planet.GetTopping());
         _hasEnded = true;
 

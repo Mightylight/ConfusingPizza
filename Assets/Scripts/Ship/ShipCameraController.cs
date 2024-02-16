@@ -16,6 +16,22 @@ public class ShipCameraController : MonoBehaviour
     private Vector2 mouseInput;
     private float xRotation, yRotation;
 
+    public float XRotation 
+    { 
+        get 
+        { 
+            return xRotation; 
+        } 
+    }
+    public float YRotation
+    {
+        get
+        {
+            return yRotation;
+        }
+    }
+
+
     private void Start()
     {
         CursorManager.CursorState(true);
@@ -36,7 +52,17 @@ public class ShipCameraController : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -maxRotX, maxRotX);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        //transform.position = Vector3.Lerp(transform.position, shipBody.position + transform.forward * -cameraDistance, camLerpSpeed * Time.deltaTime);
         transform.position = shipBody.position + transform.forward * -cameraDistance;
+    }
+
+    /// <summary>
+    /// Sets the rotation of the Camera
+    /// </summary>
+    /// <param name="xRot">X Axis</param>
+    /// <param name="yRot">Y Axis</param>
+    public void SetRotation(float xRot, float yRot)
+    {
+        xRotation = xRot;
+        yRotation = yRot;
     }
 }

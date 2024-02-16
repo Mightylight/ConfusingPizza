@@ -6,7 +6,7 @@ public class ShipMovementController : MonoBehaviour
 {
     [Header("References")]
     private Rigidbody rb;
-    public Transform shipCamera;
+    public ShipCameraController shipCamera;
 
     [Header("Ship Movement")]
     [SerializeField] private float maxVelocity;
@@ -16,15 +16,18 @@ public class ShipMovementController : MonoBehaviour
     [SerializeField] private float maxPropulsion;
     [SerializeField] private float currentPropulsion;
     [SerializeField] private float propulsionDecay;
-    public bool decayActive;
     [Space]
     [SerializeField] private float acceleration;
     [SerializeField] private float retardation;
     [SerializeField] private float movementInputWaitTime;
     private float forwardTimer;
+    [Space]
+    [SerializeField] private float handbrakeSpeed;
 
     [Header("Ship Steering")]
     [SerializeField] private float shipRotLerpSpeed;
+    private float xRot, yRot;
+    private bool isFreeCam;
 
     private void Start()
     {
@@ -41,6 +44,7 @@ public class ShipMovementController : MonoBehaviour
 
     private void ShipInput()
     {
+        // Forward and Backwards 
         if(forwardTimer >= movementInputWaitTime)
         {
             if(Input.GetKey(KeyCode.W))
@@ -52,7 +56,6 @@ public class ShipMovementController : MonoBehaviour
                     currentPropulsion = maxPropulsion;
                 }
 
-                decayActive = false;
                 forwardTimer = 0;
             }
 
@@ -65,28 +68,42 @@ public class ShipMovementController : MonoBehaviour
                     currentPropulsion = -maxPropulsion;
                 }
 
-                decayActive = false;
                 forwardTimer = 0;    
             }
         }
 
+        forwardTimer += Time.deltaTime;
+
         if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
-            decayActive = true;
+            currentPropulsion = 0;
         }
 
-        forwardTimer += Time.deltaTime;
+        // Handbrake
+        if(Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity = Vector3.MoveTowards(rb.velocity, Vector3.zero, handbrakeSpeed * Time.deltaTime);
+        }
+
+        // Free Camera
+        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            xRot = shipCamera.XRotation;
+            yRot = shipCamera.YRotation;
+
+            isFreeCam = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            shipCamera.SetRotation(xRot, yRot);
+
+            isFreeCam = false;
+        }
     }
 
     private void Movement()
     {
         rb.AddForce(transform.forward * currentPropulsion, ForceMode.Acceleration);
-
-        if(decayActive == true)
-        {
-            currentPropulsion = 0;
-            decayActive = false;
-        }
     }
 
     private void SpeedControl()
@@ -105,6 +122,9 @@ public class ShipMovementController : MonoBehaviour
 
     private void Steering()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position - shipCamera.position), shipRotLerpSpeed * Time.deltaTime);
+        if(isFreeCam == false)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.position - shipCamera.transform.position), shipRotLerpSpeed * Time.deltaTime);
+        }
     }
 }

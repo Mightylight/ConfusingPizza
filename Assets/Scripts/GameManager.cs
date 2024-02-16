@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         if (Instance == null)
         {
             Instance = this;
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
         _endPlanet = planets[randomIndex];
         _endPlanet.SetEndPlanet();
         planets.RemoveAt(randomIndex);
+        Debug.Log(_endPlanet.name);
         List<Topping> toppings = _currentOrder.GetToppings();
         
 
@@ -106,14 +108,17 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Not enough planets to decorate");
             return;
         }
+        
         // Add toppings to the remaining planets
         foreach (Topping topping in _toppings)
         {
             randomIndex = UnityEngine.Random.Range(0, planets.Count);
+            
             Debug.Log(randomIndex);
             planets[randomIndex].AddTopping(topping);
             planets.RemoveAt(randomIndex);
         }
+        
         
         //Fill the remaining planets with random toppings
         foreach (Planet planet in planets)
@@ -165,8 +170,10 @@ public class GameManager : MonoBehaviour
         if (CheckForCompletion())
         {
             //End the game, you've won
-            _endPlanetCanvas.SetActive(true);
+            //_endPlanetCanvas.SetActive(true);
             stopTimer = true;
+            float timeLeft = _timeLimitInSeconds - (Time.time - _startTime);
+            points += Mathf.FloorToInt(timeLeft);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else

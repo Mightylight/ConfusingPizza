@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4849247247538607322}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: '[ Pop-up UI ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4961103741958069233}
   - component: {fileID: 8529218896004007639}
   - component: {fileID: 7243045856109912742}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Cut!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd5c594434df0aa4aac12e5afd97686b, type: 2}
   m_sharedMaterial: {fileID: -7373940313825362430, guid: fd5c594434df0aa4aac12e5afd97686b,
@@ -125,12 +125,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 32
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 1
-  m_fontSizeMax: 28
+  m_fontSizeMax: 32
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 8645025732055650194}
   - component: {fileID: 2130427935728934181}
   - component: {fileID: 3863271199052100817}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ToppingSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3078475517863757546}
   - component: {fileID: 4573297380932006671}
   - component: {fileID: 4607615523294248485}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dark Background Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 1880229418492263437}
   - component: {fileID: 2298368109624047950}
   - component: {fileID: 8384879771066011944}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,14 +376,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3529412, g: 0.6784314, b: 0.7490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 255457c88a79ea144ba45aa3ba633e82, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 50
 --- !u!1 &4815132663977570153
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 3605065831615302113}
   - component: {fileID: 2999230294182257266}
   - component: {fileID: 5799282071989727422}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Boudnry (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,8 +427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -1.036, y: -0.0214}
+  m_SizeDelta: {x: 208.4251, y: 40.2216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2999230294182257266
 CanvasRenderer:
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 6287727595742390573}
   - component: {fileID: 4548055251394381299}
   - component: {fileID: 5388530414962611112}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a381af47871ebcf4598b0258cfd67075, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 255457c88a79ea144ba45aa3ba633e82, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 20
 --- !u!114 &5388530414962611112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2493881865841484825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836570822912310417}
   - component: {fileID: 781842334743884087}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,8 +674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -3.7621994, y: 3.2919}
+  m_SizeDelta: {x: 265.6317, y: 35.1937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &781842334743884087
 MonoBehaviour:
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 8013573023002154000}
   - component: {fileID: 6223433084980342877}
   - component: {fileID: 5798412973769989450}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SliderHolderObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,11 +787,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToPress: 0.2
-  _speed: 1
-  _precisionMultiplier: 2
-  _points: 50
+  _speed: 3
+  _precisionMultiplier: 10
+  _points: 10
   _toppingSprite: {fileID: 2987475474755925530}
-  _sliderObject: {fileID: 5765597485672447821}
   _objectToMove: {fileID: 781842334743884087}
   _pressBoundryObjects:
   - {fileID: 7020750706215012098}
@@ -807,7 +806,7 @@ GameObject:
   - component: {fileID: 7980428190078093430}
   - component: {fileID: 5625530308862646329}
   - component: {fileID: 6572241565886706698}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +941,7 @@ GameObject:
   - component: {fileID: 4972830460549438369}
   - component: {fileID: 8124707784899241776}
   - component: {fileID: 6002410681425905389}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,10 +962,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2493881865841484825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17.35041, y: 0.102199554}
+  m_SizeDelta: {x: 34.6783, y: -2.6576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8124707784899241776
 CanvasRenderer:
@@ -989,14 +988,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9490196, g: 0.9490196, b: 0.9490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 6c1e825febd030845b8c6701492dfd5f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1004,7 +1003,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8979762130820593603
 GameObject:
@@ -1018,7 +1017,7 @@ GameObject:
   - component: {fileID: 4037847193215239821}
   - component: {fileID: 7161532367527968291}
   - component: {fileID: 6884235186869502335}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dialog Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1075,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a381af47871ebcf4598b0258cfd67075, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 255457c88a79ea144ba45aa3ba633e82, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1085,7 +1084,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 20
 --- !u!114 &6884235186869502335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,13 +1112,13 @@ GameObject:
   - component: {fileID: 7788902472734306620}
   - component: {fileID: 6991787989367141441}
   - component: {fileID: 772412787395812780}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7111966239261687189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1214,7 +1213,7 @@ GameObject:
   - component: {fileID: 7020750706215012098}
   - component: {fileID: 5865023673155051853}
   - component: {fileID: 5327502545351439806}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Boudnry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1237,8 +1236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -1.036, y: -0.0214}
+  m_SizeDelta: {x: 208.4251, y: 40.2216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5865023673155051853
 CanvasRenderer:

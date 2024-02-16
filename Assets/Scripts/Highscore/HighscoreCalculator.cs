@@ -21,6 +21,7 @@ public class HighScoreCalculator : MonoBehaviour
     {
         ScoreCalculator();
         StartCoroutine(HighscoreCounter());
+        CursorManager.CursorState(false);
     }
     
 

@@ -54,11 +54,11 @@ MonoBehaviour:
   minSpawnTime: 2
   maxSpawnTime: 10
   meteorSpeed: 0
-  minMeteorSpeed: 30
-  maxMeteorSpeed: 60
+  minMeteorSpeed: 10
+  maxMeteorSpeed: 20
   meteorRotSpeed: 0
   minMeteorRotSpeed: 100
   maxMeteorRotSpeed: 400
   meteorScale: {x: 0, y: 0, z: 0}
-  minMeteorScale: 0.4
-  maxMeteorScale: 4
+  minMeteorScale: 3
+  maxMeteorScale: 8

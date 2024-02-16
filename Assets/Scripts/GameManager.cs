@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _amountOfToppingsPerOrder;
     [SerializeField] private List<Topping> _toppings;
     [SerializeField] private List<Planet> _planets;
+    [SerializeField] private Sprite _endplanetindicator;
+    
     
     [Header("Gameplay")]
     public int points = 0;
@@ -100,6 +102,9 @@ public class GameManager : MonoBehaviour
         _endPlanet.SetEndPlanet();
         planets.RemoveAt(randomIndex);
         Debug.Log(_endPlanet.name);
+        Topping indicator = new Topping();
+        indicator.toppingSprite = _endplanetindicator;
+        _endPlanet.AddTopping(indicator);
         List<Topping> toppings = _currentOrder.GetToppings();
         
 

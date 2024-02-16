@@ -90,7 +90,7 @@ public class QuickTimeEvent : MonoBehaviour
     
     private IEnumerator DisableCanvas()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         GameManager.Instance.EndQTE();
     }
 }

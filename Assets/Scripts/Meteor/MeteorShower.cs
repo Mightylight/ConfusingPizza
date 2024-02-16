@@ -31,9 +31,9 @@ public class MeteorShower : MonoBehaviour
     private Vector3 randomDir;
 
     [Header("Aiming")]
-    public Vector3 currentVelocity;
-    public Vector3 targetPrevPos;
-    public Vector3 aimPos;
+    private Vector3 currentVelocity;
+    private Vector3 targetPrevPos;
+    private Vector3 aimPos;
 
     private void Start()
     {

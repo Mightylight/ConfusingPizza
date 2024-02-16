@@ -55,13 +55,10 @@ MonoBehaviour:
   maxSpawnTime: 10
   meteorSpeed: 0
   minMeteorSpeed: 30
-  maxMeteorSpeed: 100
+  maxMeteorSpeed: 60
   meteorRotSpeed: 0
   minMeteorRotSpeed: 100
   maxMeteorRotSpeed: 400
   meteorScale: {x: 0, y: 0, z: 0}
   minMeteorScale: 0.4
-  maxMeteorScale: 5
-  currentVelocity: {x: 0, y: 0, z: 0}
-  targetPrevPos: {x: 0, y: 0, z: 0}
-  aimPos: {x: 0, y: 0, z: 0}
+  maxMeteorScale: 4

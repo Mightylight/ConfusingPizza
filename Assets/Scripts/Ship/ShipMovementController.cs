@@ -8,6 +8,7 @@ public class ShipMovementController : MonoBehaviour
     [Header("References")]
     [NonSerialized] public Rigidbody rb;
     [SerializeField] private ShipCameraController shipCamera;
+    [SerializeField] private GameObject particles;
 
     [Header("Ship Movement")]
     [SerializeField] private float maxVelocity;
@@ -43,6 +44,15 @@ public class ShipMovementController : MonoBehaviour
         Movement();
         SpeedControl();
         Steering();
+
+        if(kmPerHour > 2)
+        {
+            particles.SetActive(true);
+        }
+        else
+        {
+            particles.SetActive(false);
+        }
     }
 
     private void ShipInput()

@@ -40,10 +40,16 @@ public class HighScoreCalculator : MonoBehaviour
         if (GameManager.Instance != null)
         {
             totalScore = GameManager.Instance.points;
+            if (totalScore % 2 != 0)
+            {
+                totalScore++;
+                GameManager.Instance.points++;
+            }
             savedScores = GameManager.Instance.savedScores;
             
             savedScores = savedScores.Concat(new [] {totalScore}).ToArray();
             GameManager.Instance.savedScores = savedScores;
+            
         }
         else
         {

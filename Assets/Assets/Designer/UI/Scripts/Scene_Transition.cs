@@ -11,7 +11,7 @@ public class Scene_Transition : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene("Main Menu Scene");
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()

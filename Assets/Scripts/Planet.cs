@@ -41,7 +41,6 @@ public class Planet : MonoBehaviour
     private void OnCollisionEnter(Collision pOther)
     {
         if (!pOther.gameObject.CompareTag("Player") || isExplored) return;
-        //TODO: stop player from moving
         if (!_isEndPlanet)
         {
             GameManager.Instance.StartQTE(this);

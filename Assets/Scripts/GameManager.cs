@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
     public void StartQTE(Planet pPlanet)
     {
         CursorManager.CursorState(false);
+        ShipCameraController.CameraLock(true);
         _QTECanvas.SetActive(true);
         _quickTimeEvent.StartEvent(pPlanet);
     }
@@ -198,6 +199,7 @@ public class GameManager : MonoBehaviour
     public void EndQTE()
     {
         _QTECanvas.SetActive(false);
+        ShipCameraController.CameraLock(false);
         CursorManager.CursorState(true);
     }
     

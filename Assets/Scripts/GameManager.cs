@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Planet _endPlanet;
     
     [SerializeField] private TMP_Text _timerText;
+    [SerializeField] private TMP_Text _toppingText;
+    
     [SerializeField] private GameObject _planetParent;
     private float _startTime;
     
@@ -131,9 +133,13 @@ public class GameManager : MonoBehaviour
             
             Debug.Log("Game over");
         }
-        
+        //Display time in minutes
         float timeLeft = _timeLimitInSeconds - (Time.time - _startTime);
-        _timerText.text = $"Time: {timeLeft:F0}";
+        int minutes = Mathf.FloorToInt(timeLeft / 60F);
+        int seconds = Mathf.FloorToInt(timeLeft - minutes * 60);
+        string fancyTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+        _timerText.text = fancyTime;
+        // _timerText.text = $"Time: {timeLeft:F0}";
     }
 
     private void EndGame()
@@ -155,6 +161,12 @@ public class GameManager : MonoBehaviour
             order.AddTopping(_toppings[UnityEngine.Random.Range(0, _toppings.Count)]);
         }
         _currentOrder = order;
+        string ingredientString = "";
+        for (int i = 0 ; i < _toppings.Count ; i++)
+        {
+            ingredientString += $"{i + 1}. {_toppings[i].toppingName}\n";
+        }
+        _toppingText.text = ingredientString;
     }
 
     public void EndPlanet()
@@ -174,6 +186,7 @@ public class GameManager : MonoBehaviour
 
     public void StartQTE(Planet pPlanet)
     {
+        CursorManager.CursorState(false);
         _QTECanvas.SetActive(true);
         _quickTimeEvent.StartEvent(pPlanet);
     }
@@ -181,6 +194,7 @@ public class GameManager : MonoBehaviour
     public void EndQTE()
     {
         _QTECanvas.SetActive(false);
+        CursorManager.CursorState(true);
     }
     
     public void AddPoints(int pPoints)

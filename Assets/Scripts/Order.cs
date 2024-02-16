@@ -17,6 +17,11 @@ public class Order
     {
         _toppings.Remove(pTopping);
     }
+    
+    public bool ContainsTopping(Topping pTopping)
+    {
+        return _toppings.Contains(pTopping);
+    }
 
     public List<Topping> GetToppings()
     {

@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -11,16 +13,6 @@ public class Order
     {
         // Add topping to the array
         _toppings.Add(pTopping);
-    }
-
-    public void RemoveTopping(Topping pTopping)
-    {
-        _toppings.Remove(pTopping);
-    }
-    
-    public bool ContainsTopping(Topping pTopping)
-    {
-        return _toppings.Contains(pTopping);
     }
 
     public List<Topping> GetToppings()

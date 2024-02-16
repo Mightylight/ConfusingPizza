@@ -7,15 +7,15 @@ public class CursorManager : MonoBehaviour
     /// <summary>
     /// Sets the cursors locked and visible state.
     /// </summary>
-    /// <param name="lockedState">If set to true, cursor is locked and not visible. If set to false, cursor is confined and visible.</param>
-    public static void CursorState(bool lockedState)
+    /// <param name="lockState">If set to true, cursor is locked and not visible. If set to false, cursor is confined and visible.</param>
+    public static void CursorState(bool lockState)
     {
-        if(lockedState == true)
+        if(lockState == true)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        else if(lockedState == false)
+        else if(lockState == false)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;

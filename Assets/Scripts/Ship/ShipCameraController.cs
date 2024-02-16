@@ -12,6 +12,7 @@ public class ShipCameraController : MonoBehaviour
     [SerializeField] private float cameraDistance;
     [SerializeField] private float maxRotX;
     [SerializeField] private float camLerpSpeed;
+    private static bool locked;
 
     private Vector2 mouseInput;
     private float xRotation, yRotation;
@@ -31,19 +32,31 @@ public class ShipCameraController : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
         CursorManager.CursorState(true);
+        CameraLock(false);
     }
 
     private void Update()
     {
         ThirdPersonCamera();
     }
+    
+    /// <summary>
+    /// Locks the Camera.
+    /// </summary>
+    /// <param name="lockState">If set to true the camera is locked. If set to false its unlocked.</param>
+    public static void CameraLock(bool lockState)
+    {
+        locked = lockState;
+        //CursorManager.CursorState(!lockState);
+    }
 
     private void ThirdPersonCamera()
     {
+        if(locked == true) return;
+
         mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseSensMulti;
 
         yRotation += mouseInput.x;

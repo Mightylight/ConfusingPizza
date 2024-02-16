@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.034508713, y: 0.1147628}
   m_AnchorMax: {x: 0.9652968, y: 0.90900004}
-  m_AnchoredPosition: {x: 0, y: -0.020599365}
+  m_AnchoredPosition: {x: 0, y: -0.020629883}
   m_SizeDelta: {x: 1.5056152, y: 2.4511032}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186197703
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 121.35
+  m_fontSize: 116.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -361,7 +361,6 @@ GameObject:
   - component: {fileID: 588803763}
   - component: {fileID: 588803765}
   - component: {fileID: 588803764}
-  - component: {fileID: 588803766}
   m_Layer: 5
   m_Name: Pizza Icon
   m_TagString: Untagged
@@ -426,18 +425,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588803762}
   m_CullTransparentMesh: 1
---- !u!114 &588803766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588803762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748aa4ee52af2254c92a576fdd63a609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &656869385
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656869386}
+  - component: {fileID: 656869387}
   m_Layer: 5
   m_Name: End Screen
   m_TagString: Untagged
@@ -470,6 +458,20 @@ Transform:
   - {fileID: 1030308077}
   m_Father: {fileID: 6991750159143176705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &656869387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656869385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c078fe442f44141a20392a9cbb2b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscore: {fileID: 186197703}
+  _scoreHistoryText: {fileID: 2072549577}
 --- !u!1 &784756717
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05364583, y: 0.81200004}
   m_AnchorMax: {x: 0.65137494, y: 0.94900006}
-  m_AnchoredPosition: {x: -1.8800049, y: 5.0563965}
+  m_AnchoredPosition: {x: -1.8800049, y: 5.0566406}
   m_SizeDelta: {x: 1.2600098, y: -8.30188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913055397
@@ -959,7 +961,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 123.7
+  m_fontSize: 118.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1273,7 +1275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.74, y: 0.07342435}
   m_AnchorMax: {x: 0.947, y: 0.20622602}
-  m_AnchoredPosition: {x: 0.41992188, y: 1.5046387}
+  m_AnchoredPosition: {x: 0.41992188, y: 1.5043945}
   m_SizeDelta: {x: -138.1458, y: -55.378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897024111
@@ -1519,12 +1521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'DELIVERIES completed: 12
-
-    Perfect Processing: +500
-
-    Perfect Delivery:
-    +500'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd5c594434df0aa4aac12e5afd97686b, type: 2}
   m_sharedMaterial: {fileID: -7373940313825362430, guid: fd5c594434df0aa4aac12e5afd97686b,
@@ -1552,7 +1549,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

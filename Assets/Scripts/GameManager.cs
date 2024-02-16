@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Misc")]
     private Planet _endPlanet;
+    public int[] savedScores = {0, 0, 0, 0, 0};
     
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private TMP_Text _toppingText;
@@ -127,10 +129,7 @@ public class GameManager : MonoBehaviour
         if(stopTimer) return;
         if (Time.time - _startTime > _timeLimitInSeconds)
         {
-            // End the game
-            EndGame();
-            ShowHighScores();
-            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("Game over");
         }
         //Display time in minutes
@@ -139,20 +138,8 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeLeft - minutes * 60);
         string fancyTime = string.Format("{0:0}:{1:00}", minutes, seconds);
         _timerText.text = fancyTime;
-        // _timerText.text = $"Time: {timeLeft:F0}";
     }
-
-    private void EndGame()
-    {
-        
-    }
-
-    private void ShowHighScores()
-    {
-        // TODO: Highscore system
-        //Get the textfile and put the highscore in there
-    }
-
+    
     private void GetRandomOrder()
     {
         Order order = new();
@@ -180,6 +167,7 @@ public class GameManager : MonoBehaviour
             //End the game, you've won
             _endPlanetCanvas.SetActive(true);
             stopTimer = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {

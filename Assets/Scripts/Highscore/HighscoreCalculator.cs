@@ -3,41 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class HighScoreCalculator : MonoBehaviour
 {
-    [SerializeField] GameObject highscore; 
+    [SerializeField] TMP_Text highscore;
+    [SerializeField] private TMP_Text _scoreHistoryText;
+    
     int score;
     int totalScore;
-    //Placeholder Example Scores
-    int[] savedScores = new int[] {5000, 4000, 3000, 2000, 1000};
+    int[] savedScores;
 
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        score = 0; 
+        ScoreCalculator();
+        StartCoroutine(HighscoreCounter());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Temporairly bound to space key
-        if (Input.GetKeyDown("space"))
-        {
-            ScoreCalculator();
-            StartCoroutine(HighscoreCounter());
-        }        
-    }
+    
 
     IEnumerator HighscoreCounter()
     {
         while (score < totalScore)
         {
-            score = score+2;
-            highscore.GetComponent<TMPro.TextMeshProUGUI>().text = "Highscore: " + Convert.ToString(score);
+            score += 2;
+            highscore.text = "Score: " + Convert.ToString(score);
             yield return 0;
         }
         PreviousScoreGenerator();
@@ -45,17 +37,29 @@ public class HighScoreCalculator : MonoBehaviour
 
     void ScoreCalculator()
     {
-        //Placeholder Total Score
-        totalScore = 2345;
+        if (GameManager.Instance != null)
+        {
+            totalScore = GameManager.Instance.points;
+            savedScores = GameManager.Instance.savedScores;
+            
+            savedScores = savedScores.Concat(new [] {totalScore}).ToArray();
+            GameManager.Instance.savedScores = savedScores;
+        }
+        else
+        {
+            totalScore = 500;
+            savedScores = new []{0, 0, 0, 0, 0};
+        }
+        
     }
 
     void PreviousScoreGenerator()
     {
-        savedScores = savedScores.Concat(new int[] {totalScore}).ToArray();
+        savedScores = savedScores.Concat(new [] {totalScore}).ToArray();
         Array.Sort(savedScores);
         Array.Reverse(savedScores);
-        highscore.GetComponent<TMPro.TextMeshProUGUI>().text = highscore.GetComponent<TMPro.TextMeshProUGUI>().text + 
-            "\n\n1st - " + Convert.ToString(savedScores[0]) + 
+        _scoreHistoryText.text = 
+            "1st - " + Convert.ToString(savedScores[0]) + 
             "\n2nd - " + Convert.ToString(savedScores[1]) + 
             "\n3rd - " + Convert.ToString(savedScores[2]) + 
             "\n4th - " + Convert.ToString(savedScores[3]) + 

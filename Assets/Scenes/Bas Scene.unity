@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3e8bc5155c4c9ed46a63ac64c06408f3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.031483587, g: 0.009458372, b: 0.013140744, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -407,11 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46513173fdf26d847a4b7a0b4aff1630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planetName: 
+  planetName: 
   isExplored: 0
   _topping:
     toppingName: 
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
 --- !u!65 &179429338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -616,11 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46513173fdf26d847a4b7a0b4aff1630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planetName: 
+  planetName: 
   isExplored: 0
   _topping:
     toppingName: 
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
 --- !u!1 &454024231
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,11 +739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46513173fdf26d847a4b7a0b4aff1630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planetName: 
+  planetName: 
   isExplored: 0
   _topping:
     toppingName: 
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
 --- !u!1 &488548941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,11 +1016,11 @@ MonoBehaviour:
   _amountOfToppingsPerOrder: 3
   _toppings:
   - toppingName: Worm
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
   - toppingName: Snail
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
   - toppingName: Soup
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
   _planets:
   - {fileID: 1712068377}
   - {fileID: 179429337}
@@ -1035,6 +1035,8 @@ MonoBehaviour:
   _planetParent: {fileID: 1185044416}
   _quickTimeEvent: {fileID: 741062758}
   _QTECanvas: {fileID: 1333083128}
+  _endPlanetCanvas: {fileID: 0}
+  _endRequirementNotMetCanvas: {fileID: 0}
 --- !u!4 &708126476
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,11 +1172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46513173fdf26d847a4b7a0b4aff1630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planetName: 
+  planetName: 
   isExplored: 0
   _topping:
     toppingName: 
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
 --- !u!65 &1403905933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1364,11 +1366,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46513173fdf26d847a4b7a0b4aff1630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planetName: 
+  planetName: 
   isExplored: 0
   _topping:
     toppingName: 
-    toppingPrefab: {fileID: 0}
+    toppingSprite: {fileID: 0}
 --- !u!4 &1712068378
 Transform:
   m_ObjectHideFlags: 0
@@ -1460,6 +1462,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7039650092292502807, guid: ef5a498fa197f1b4c9b901ecf3cd0569,
+        type: 3}
+      propertyPath: _timeToPress
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7039650092292502807, guid: ef5a498fa197f1b4c9b901ecf3cd0569,
         type: 3}
       propertyPath: _precisionMultiplier

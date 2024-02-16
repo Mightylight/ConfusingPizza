@@ -62,7 +62,7 @@ public class ShipCameraController : MonoBehaviour
         yRotation += mouseInput.x;
         xRotation += mouseInput.y;
 
-        xRotation = Mathf.Clamp(xRotation, -maxRotX, maxRotX);
+        //xRotation = Mathf.Clamp(xRotation, -maxRotX, maxRotX);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.position = shipBody.position + transform.forward * -cameraDistance;

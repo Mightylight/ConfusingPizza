@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,8 @@ using UnityEngine;
 public class ShipMovementController : MonoBehaviour
 {
     [Header("References")]
-    private Rigidbody rb;
-    public ShipCameraController shipCamera;
+    [NonSerialized] public Rigidbody rb;
+    [SerializeField] private ShipCameraController shipCamera;
 
     [Header("Ship Movement")]
     [SerializeField] private float maxVelocity;
@@ -21,6 +22,7 @@ public class ShipMovementController : MonoBehaviour
     [SerializeField] private float retardation;
     [SerializeField] private float movementInputWaitTime;
     private float forwardTimer;
+    private bool canInput;
     [Space]
     [SerializeField] private float handbrakeSpeed;
 
@@ -32,6 +34,7 @@ public class ShipMovementController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        canInput = true;
     }
 
     private void Update()
@@ -44,6 +47,8 @@ public class ShipMovementController : MonoBehaviour
 
     private void ShipInput()
     {
+        if(canInput == false) return;
+
         // Forward and Backwards 
         if(forwardTimer >= movementInputWaitTime)
         {
@@ -124,7 +129,41 @@ public class ShipMovementController : MonoBehaviour
     {
         if(isFreeCam == false)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.position - shipCamera.transform.position), shipRotLerpSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.position - shipCamera.transform.position, shipCamera.transform.up), shipRotLerpSpeed * Time.deltaTime);
         }
+    }
+
+    public void Hit(Vector3 hitDir, float pushForce)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShipHit(hitDir, pushForce));
+    }
+
+    private IEnumerator ShipHit(Vector3 hitDir, float pushForce)
+    {
+        canInput = false;
+
+        rb.velocity = Vector3.zero;
+        hitDir.Normalize();
+
+        float timer = 0; 
+        bool run = true;
+
+        while(run)
+        {
+            rb.AddForce(hitDir * pushForce, ForceMode.Acceleration);
+
+            timer += Time.deltaTime;
+        
+            if(1 >= timer)
+            {
+                run = false;
+                canInput = true;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
     }
 }

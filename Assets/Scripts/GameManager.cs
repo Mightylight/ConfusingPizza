@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     
     
     public static GameManager Instance;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -54,14 +55,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        _startTime = Time.time;
-        GetRandomOrder();
-        Debug.Log("Got random order");
-        DecoratePlanets();
-        Debug.Log("Decorated Planets");
+        ResetGame();
     }
 
     private void Update()
@@ -73,6 +67,22 @@ public class GameManager : MonoBehaviour
             _quickTimeEvent.StartEvent(_planets[0]);
             _QTECanvas.SetActive(true);
         }
+    }
+
+    public void ResetGame()
+    {
+        _startTime = Time.time;
+        foreach (Planet planet in _planets)
+        {
+            planet.isExplored = false;
+        }
+
+        aqquiredToppings.Clear();
+        stopTimer = false;
+        GetRandomOrder();
+        Debug.Log("Got random order");
+        DecoratePlanets();
+        Debug.Log("Decorated Planets");
     }
 
     private bool CheckForCompletion()
@@ -141,6 +151,8 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("Game over");
+            stopTimer = true;
+            
         }
         //Display time in minutes
         float timeLeft = _timeLimitInSeconds - (Time.time - _startTime);
@@ -185,7 +197,14 @@ public class GameManager : MonoBehaviour
         {
             //Show player that they do not have everything yet
             _endRequirementNotMetCanvas.SetActive(true);
+            StartCoroutine(Dissapear());
         }
+    }
+
+    private IEnumerator Dissapear()
+    {
+        yield return new WaitForSeconds(2);
+        _endRequirementNotMetCanvas.SetActive(false);
     }
 
     public void StartQTE(Planet pPlanet)

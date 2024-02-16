@@ -12,6 +12,7 @@ public class Scene_Transition : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(0);
+        GameManager.Instance.ResetGame();
     }
 
     public void ExitGame()
